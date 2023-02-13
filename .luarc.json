@@ -1,0 +1,20 @@
+{
+    "workspace.library": [
+        "/home/tha/.config/nvim",
+        "/home/tha/.local/share/nvim/lazy/lazy.nvim",
+        "/home/tha/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/tha/.local/share/nvim/lazy/prettier.nvim",
+        "/home/tha/.local/share/nvim/lazy/telescope-fzy-native.nvim",
+        "/home/tha/.local/share/nvim/lazy/plenary.nvim",
+        "/home/tha/.local/share/nvim/lazy/telescope.nvim",
+        "/home/tha/.local/share/nvim/lazy/telescope-media-files.nvim",
+        "/home/tha/.local/share/nvim/lazy/lazygit.nvim",
+        "/home/tha/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/tha/.local/share/nvim/lazy/null-ls.nvim",
+        "/home/tha/.local/share/nvim/lazy/telescope-file-browser.nvim",
+        "/home/tha/.local/share/nvim/lazy/melange-nvim",
+        "/usr/share/nvim/runtime",
+        "/home/tha/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library"
+    ]
+}

@@ -13,7 +13,6 @@ return {
   config = function()
     local nvim_lsp = require("lspconfig")
     nvim_lsp.pyright.setup{}
-    local protocol = require("vim.lsp.protocol")
 
 
     local on_attach = function(client, bufnr)
@@ -24,18 +23,23 @@ return {
         vim.api.nvim_command [[augroup END]]
       end
     end
-
     local lsp_flags = {
       -- This is the default in Nvim 0.7+
       debounce_text_changes = 150,
     }
+    
+    -- local capabilities = vim.lsp.protocol.make_client_capabilites()
+    -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
     require('lspconfig')['pyright'].setup{
         on_attach = on_attach,
         flags = lsp_flags,
+        -- capabilities = capabilities
     }
     require('lspconfig')['tsserver'].setup{
         on_attach = on_attach,
         flags = lsp_flags,
+        -- capabilities = capabilities
     }
     require('lspconfig')['rust_analyzer'].setup{
         on_attach = on_attach,
@@ -43,7 +47,8 @@ return {
         -- Server-specific settings...
         settings = {
           ["rust-analyzer"] = {}
-        }
+        },
+        -- capabilities = capabilities
     }
 
     nvim_lsp.tsserver.setup {
@@ -81,9 +86,14 @@ return {
     }
 
     nvim_lsp.eslint.setup{
-      on_attach = on_attach,
-      filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "vuex" },
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        command = "EslintFixAll",
+      })
+      end,
       cmd = { "vscode-eslint-language-server", "--stdio" },
+      filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue", "svelte", "astro" },
       settings = {
         codeAction = {
           disableRuleComment = {
@@ -98,10 +108,16 @@ return {
           enable = false,
           mode = "all"
         },
+        experimental = {
+          useFlatConfig = false
+        },
         format = true,
         nodePath = "",
         onIgnoredFiles = "off",
         packageManager = "npm",
+        problems = {
+          shortenToSingleLine = false
+        },
         quiet = false,
         rulesCustomizations = {},
         run = "onType",
@@ -110,14 +126,14 @@ return {
         workingDirectory = {
           mode = "location"
         }
-      }
+      },
     }
-    nvim_lsp.r_language_server.setup{
-      cmd = { "R", "--slave", "-e", "languageserver::run()"},
-      filetypes = {"r", "rmd"},
-      log_level = 2,
-      root_dir = nvim_lsp.util.root_pattern(".git")
-    }
+    -- nvim_lsp.r_language_server.setup{
+    --   cmd = { "R", "--slave", "-e", "languageserver::run()"},
+    --   filetypes = {"r", "rmd"},
+    --   log_level = 2,
+    --   root_dir = nvim_lsp.util.root_pattern(".git")
+    -- }
     nvim_lsp.rust_analyzer.setup{
       cmd = {"rust-analyzer"},
       filetypes = {"rust"},

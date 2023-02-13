@@ -16,6 +16,12 @@ return {
         "typescript",
         "typescriptreact",
         "yaml",
+        "lua",
+        "rust",
+        "nvim",
+        "vue",
+        "svelte",
+        "markdown",
       },
     }
   end

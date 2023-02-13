@@ -6,6 +6,7 @@ return{
     config = function()
       -- load the colorscheme here
       vim.cmd([[colorscheme melange]])
+      vim.opt.background = 'dark'
     end,
   },
 }

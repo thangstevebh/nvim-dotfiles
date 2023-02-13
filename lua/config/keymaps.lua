@@ -42,7 +42,7 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 keymap.set('n', '<C-f>', ':Prettier<Return>', { silent = true })
 
 -- Save Document
-keymap.set('n', '<C-s>', ':w<Return>', {silent = true})
+keymap.set('n', '<C-s>', ':wa<Return>', {silent = true})
 
 --Lazygit
 keymap.set('n', '<Leader>gg', ':LazyGit<Return>', { silent = true })
