@@ -38,8 +38,9 @@ keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
--- Prettier
+-- Formatter Linter
 keymap.set('n', '<C-f>', ':Prettier<Return>', { silent = true })
+vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true })
 
 -- Save Document
 keymap.set('n', '<C-s>', ':wa<Return>', {silent = true})

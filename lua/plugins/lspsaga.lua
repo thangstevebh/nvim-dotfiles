@@ -25,24 +25,33 @@ return {
         hover = ' ',
         kind = {},
       },
+
+      definition = {
+        edit = "<C-c>o",
+        vsplit = "<C-c>v",
+        split = "<C-c>i",
+        tabe = "<C-c>t",
+        quit = "q",
+        close = "q",
+      }
     })
-    local otps = { noremap = true, silent = true }
+    local opts = { noremap = true, silent = true }
 
     vim.keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
     vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
     vim.keymap.set({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-    vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
+    vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", opts)
-    vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
+    vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
     vim.keymap.set("n", "gr", "<cmd>Lspsaga rename ++project<CR>", opts)
     vim.keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts)
     vim.keymap.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
     vim.keymap.set("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
     vim.keymap.set("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
-    vim.keymap.set("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", otps)
-    vim.keymap.set("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", otps)
-    vim.keymap.set("n", "<Leader>o", "<cmd>Lspsaga outline<CR>", otps)
+    vim.keymap.set("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", opts)
+    vim.keymap.set("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", opts)
+    vim.keymap.set("n", "<Leader>o", "<cmd>Lspsaga outline<CR>", opts)
   end,
 }
 
