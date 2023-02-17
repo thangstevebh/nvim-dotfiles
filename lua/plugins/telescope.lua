@@ -44,7 +44,8 @@ return {
                 end
               }
             }
-          }
+          },
+          
         }
       })
       
@@ -54,6 +55,7 @@ return {
 
       telescope.load_extension('fzy_native')
       telescope.load_extension('file_browser')
+      telescope.load_extension('project')
 
       local opts = { noremap = true, silent = true }
       vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = false, hidden = true})<cr>', opts)
@@ -64,6 +66,7 @@ return {
       vim.keymap.set('n', ';e', '<cmd>lua require("telescope.builtin").diagnostics()<cr>', opts)
       vim.keymap.set('n', 'sf', '<cmd>lua require("telescope").extensions.file_browser.file_browser({ path = "%:p:h", cwd = telescope_buffer_dir(), respect_git_ignore = false, hidden = true, grouped = true, previewer = false, all_previewers = true, initial_mode = "normal", layout_config = { height = 40 }})<cr>', opts)
       vim.keymap.set('n', 'sm', '<cmd>lua require("telescope").extensions.media_files.media_files({ path = "%:p:h", cwd = telescope_buffer_dir() })<cr>', opts)
+      vim.keymap.set('n', ';p', '<cmd>lua require("telescope").extensions.project.project{ display_type = "full"}<CR>', opts)
 
     end
 }

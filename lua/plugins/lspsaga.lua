@@ -1,18 +1,18 @@
 return {
   "glepnir/lspsaga.nvim",
   dependencies = {
-    { "kyazdani42/nvim-web-devicons"},
-    {"nvim-treesitter/nvim-treesitter"},
+    { "kyazdani42/nvim-web-devicons" },
+    { "nvim-treesitter/nvim-treesitter" },
   },
   event = "BufRead",
   config = function()
     require("lspsaga").setup({
       ui = {
-      --   -- Currently, only the round theme exists
+        --   -- Currently, only the round theme exists
         theme = "round",
-      --   -- This option only works in Neovim 0.9
+        --   -- This option only works in Neovim 0.9
         title = true,
-      --   -- Border type can be single, double, rounded, solid, shadow.
+        --   -- Border type can be single, double, rounded, solid, shadow.
         border = "double",
         winblend = 1,
         expand = "",
@@ -22,28 +22,46 @@ return {
         diagnostic = "🐞",
         incoming = " ",
         outgoing = " ",
-        hover = ' ',
-        kind = {},
+        hover = " ",
+        kind = {
+        }
       },
-
       definition = {
         edit = "<C-c>o",
         vsplit = "<C-c>v",
         split = "<C-c>i",
         tabe = "<C-c>t",
         quit = "q",
-        close = "q",
-      }
+        close = "<C-w>",
+      },
+      lightbulb = {
+        enable = true,
+        enable_in_insert = true,
+        sign = true,
+        sign_priority = 40,
+        virtual_text = true,
+      },
+      rename = {
+        quit = "<C-w>",
+        exec = "<CR>",
+        mark = "x",
+        confirm = "<CR>",
+        in_select = true,
+      },
+      beacon = {
+        enable = true,
+        frequency = 7,
+      },
     })
     local opts = { noremap = true, silent = true }
 
     vim.keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
     vim.keymap.set("n", "<C-k>", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-    vim.keymap.set({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
-    vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+    vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+    vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc ++keep<CR>", opts)
-    vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+    vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
     vim.keymap.set("n", "gr", "<cmd>Lspsaga rename ++project<CR>", opts)
     vim.keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts)
     vim.keymap.set("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
@@ -54,4 +72,3 @@ return {
     vim.keymap.set("n", "<Leader>o", "<cmd>Lspsaga outline<CR>", opts)
   end,
 }
-
