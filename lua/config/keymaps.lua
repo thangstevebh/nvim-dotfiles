@@ -39,12 +39,11 @@ keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
 
 -- Formatter Linter
-keymap.set('n', '<C-f>', ':Prettier<Return>', { silent = true })
+keymap.set('n', '<C-f>', ':Prettier<Return>', { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { noremap = true, silent = true })
 
 -- Save Document
-keymap.set('n', '<C-s>', ':wa<Return>', {silent = true})
+keymap.set('n', '<C-s>', ':wa<Return>', { noremap = true, silent = true })
 
 --Lazygit
 keymap.set('n', '<Leader>gg', ':LazyGit<Return>', { silent = true })
-
