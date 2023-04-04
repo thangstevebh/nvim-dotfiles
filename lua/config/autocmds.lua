@@ -52,3 +52,18 @@ vim.keymap.set('n', '<A-k>', '<Cmd>m .-2<cr>==', opts)
 vim.keymap.set('i', '<A-j> <Esc>', '<Cmd>m .+1<cr>==gi', opts)
 vim.keymap.set('i', '<A-k> <Esc>', '<Cmd>m .-2<cr>==gi', opts)
 
+local ag = vim.api.nvim_create_augroup
+local au = vim.api.nvim_create_autocmd
+
+-- GROUPS:
+local disable_node_modules_eslint_group =
+	ag("DisableNodeModulesEslint", { clear = true })
+
+-- AUTO-COMMANDS:
+au({ "BufNewFile", "BufRead" }, {
+	pattern = { "**/node_modules/**", "node_modules", "/node_modules/*", "**/dist/**", "dist", "/dist/*" },
+	callback = function()
+		vim.diagnostic.disable()
+	end,
+	group = disable_node_modules_eslint_group,
+})

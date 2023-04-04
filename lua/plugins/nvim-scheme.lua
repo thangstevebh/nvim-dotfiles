@@ -22,7 +22,7 @@ return{
         transparent_mode = false,
       })
       -- load the colorscheme here
-      vim.opt.background = 'light'
+      vim.opt.background = 'dark'
       vim.cmd([[colorscheme gruvbox]])
       vim.cmd([[hi TitleString guifg=#1c1c19]])
       vim.cmd([[hi SagaBorder guifg=#F49D1A]])

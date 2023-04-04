@@ -27,10 +27,10 @@ return {
         }
       },
       definition = {
-        edit = "<C-c>o",
-        vsplit = "<C-c>v",
-        split = "<C-c>i",
-        tabe = "<C-c>t",
+        edit = "<C-t>o",
+        vsplit = "<C-t>v",
+        split = "<C-t>i",
+        tabe = "<C-t>t",
         quit = "q",
         close = "<C-w>",
       },

@@ -31,6 +31,11 @@ keymap.set("", "s<left>", "<C-w>h")
 keymap.set("", "s<up>", "<C-w>k")
 keymap.set("", "s<down>", "<C-w>j")
 keymap.set("", "s<right>", "<C-w>l")
+-- Switch direction
+keymap.set("", "sH", "<cmd>wincmd H<CR>")
+keymap.set("", "sL", "<cmd>wincmd L<CR>")
+keymap.set("", "sJ", "<cmd>wincmd J<CR>")
+keymap.set("", "sK", "<cmd>wincmd K<CR>")
 
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
@@ -52,3 +57,20 @@ keymap.set("n", "<C-s>", ":wa<Return>", { noremap = true, silent = true })
 
 --Lazygit
 keymap.set("n", "<Leader>gg", ":LazyGit<Return>", { silent = true })
+
+--transparent
+keymap.set("n", "<Leader>tt", ":TransparentToggle<Return>", { silent = true , noremap = true })
+
+--COPY PASTE CUT
+--
+keymap.set("i", "<C-X>", '"+x',{ silent = true })
+keymap.set("v", "<C-X>", '"+x', { silent = true })
+
+keymap.set("i", "<C-C>", '"+y', { silent = true })
+keymap.set("v", "<C-c>", '"+y', { silent = true })
+
+keymap.set("i", "<C-v>", '"+gP', { silent = true })
+keymap.set("n", "<C-v>", '"+gP', { silent = true })
+
+--REDO
+keymap.set("n", "<C-z>", "<C-r>")

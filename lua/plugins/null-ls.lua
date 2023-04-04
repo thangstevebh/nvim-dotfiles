@@ -11,21 +11,22 @@ return {
 
     null_ls.setup({
       sources = {
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.stylint,
-        null_ls.builtins.diagnostics.dotenv_linter,
-        null_ls.builtins.diagnostics.sqlfluff.with({
-          extra_args = { "--dialect", "postgres" }, -- change to your dialect
-        }),
-        null_ls.builtins.diagnostics.xo,
+        -- null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.diagnostics.stylint,
+        -- null_ls.builtins.diagnostics.dotenv_linter,
+        -- null_ls.builtins.diagnostics.sqlfluff.with({
+        --   extra_args = { "--dialect", "postgres" }, -- change to your dialect
+        -- }),
+        -- null_ls.builtins.diagnostics.xo,
 
-        null_ls.builtins.code_actions.eslint_d,
+        -- null_ls.builtins.code_actions.eslint_d,
 
-        null_ls.builtins.completion.vsnip,
+        -- null_ls.builtins.completion.vsnip,
+        null_ls.builtins.diagnostics.cspell,
 
         null_ls.builtins.formatting.lua_format,
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettierd
+        -- null_ls.builtins.formatting.prettierd
       },
     })
   end,
