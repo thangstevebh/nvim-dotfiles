@@ -1,19 +1,45 @@
 return {
-  "akinsho/bufferline.nvim",
-		dependencies = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("bufferline").setup{
-        options = {
-          mode = "tabs",
-          separator_style = 'slant',
-          always_show_bufferline = true,
-          show_buffer_close_icons = false,
-          show_close_icon = false,
-          color_icons = true
-        }
-      }
-      local opts = {noremap = true, silent = true}
-      vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', otps)
-      vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', otps)
-		end,
+	"akinsho/bufferline.nvim",
+	version = "v3.*",
+	dependencies = "kyazdani42/nvim-web-devicons",
+	config = function()
+		require("bufferline").setup({
+			options = {
+				mode = "tabs",
+				separator_style = "slant",
+				always_show_bufferline = true,
+				show_buffer_close_icons = false,
+				show_close_icon = false,
+				color_icons = true,
+				indicator = {
+					icon = "▌",
+					style = "icon",
+				},
+				offsets = {
+					{
+						filetype = "Outline",
+						text = "Symbols Outline",
+						highlight = "Directory",
+						text_align = "center",
+					},
+					{
+						filetype = "neo-tree",
+						text = "Neo Tree",
+						highlight = "Directory",
+						text_align = "center",
+					},
+				},
+			},
+			highlights = {
+				indicator_selected = {
+					fg = "#61afef",
+				},
+			},
+		})
+		local opts = { noremap = true, silent = true }
+		vim.keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts)
+		vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts)
+		vim.keymap.set("n", "<leader><Tab>", "<Cmd>BufferLineMoveNext<CR>", opts)
+		vim.keymap.set("n", "<leader><S-Tab>", "<Cmd>BufferLineMovePrev<CR>", opts)
+	end,
 }

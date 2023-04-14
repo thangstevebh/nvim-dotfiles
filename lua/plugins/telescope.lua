@@ -56,7 +56,7 @@ return {
       telescope.load_extension('fzy_native')
       telescope.load_extension('file_browser')
       telescope.load_extension('project')
-
+      telescope.load_extension('aerial')
       local opts = { noremap = true, silent = true }
       vim.keymap.set('n', ';f', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = false, hidden = true})<cr>', opts)
       vim.keymap.set('n', ';r', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)

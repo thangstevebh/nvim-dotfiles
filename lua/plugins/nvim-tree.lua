@@ -22,7 +22,7 @@ return {
 		})
 		vim.keymap.set("n", "<leader>b", "<Cmd>NvimTreeToggle<CR>", {})
 		vim.keymap.set("n", "<leader>v", "<Cmd>NvimTreeFocus<CR>", {})
-		vim.keymap.set("n", "<leader>a", "<Cmd>NvimTreeResize +20<CR>", {})
+		vim.keymap.set("n", "<leader>D", "<Cmd>NvimTreeResize +20<CR>", {})
 		vim.keymap.set("n", "<leader>d", "<Cmd>NvimTreeResize -20<CR>", {})
 		vim.keymap.set("n", "<leader>r", "<Cmd>NvimTreeRefresh<CR>", {})
 	end,

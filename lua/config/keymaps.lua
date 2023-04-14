@@ -17,6 +17,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- New tab
 keymap.set("n", "te", ":tabedit<Return>", { silent = true })
+keymap.set("n", "tq", ":tabclose<Return>", { silent = true })
 -- Split window
 keymap.set("n", "ss", ":split<Return><C-w>w", { silent = true })
 keymap.set("n", "sv", ":vsplit<Return><C-w>w", { silent = true })
@@ -63,14 +64,15 @@ keymap.set("n", "<Leader>tt", ":TransparentToggle<Return>", { silent = true , no
 
 --COPY PASTE CUT
 --
-keymap.set("i", "<C-X>", '"+x',{ silent = true })
 keymap.set("v", "<C-X>", '"+x', { silent = true })
 
-keymap.set("i", "<C-C>", '"+y', { silent = true })
 keymap.set("v", "<C-c>", '"+y', { silent = true })
 
-keymap.set("i", "<C-v>", '"+gP', { silent = true })
 keymap.set("n", "<C-v>", '"+gP', { silent = true })
 
 --REDO
 keymap.set("n", "<C-z>", "<C-r>")
+
+-- aerial
+--
+vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
