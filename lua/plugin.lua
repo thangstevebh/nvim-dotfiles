@@ -14,20 +14,20 @@ vim.opt.rtp:prepend(lazypath)
 --vim.g.maplocalleader = " "
 
 require("lazy").setup("plugins", {
- checker = { enabled = true },
- change_detection = {
-  notify = false,
- },
- performance = {
-  rtp = {
-   disabled_plugins = {
-    "gzip",
-    "netrwPlugin",
-    "tarPlugin",
-    "tohtml",
-    "tutor",
-    "zipPlugin",
-   },
+  checker = { enabled = true },
+  change_detection = {
+    notify = false,
   },
- },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })

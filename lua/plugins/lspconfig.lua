@@ -105,68 +105,69 @@ return {
       single_file_support = false,
     })
 --
-    nvim_lsp.eslint.setup({
-      on_attach = function(client, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          command = "EslintFixAll",
-        })
-      end,
-      cmd = { "vscode-eslint-language-server", "--stdio" },
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx",
-        "typescript",
-        "typescriptreact",
-        "typescript.tsx",
-        "vue",
-        "svelte",
-        "astro",
-      },
-      root_dir = function(filename, bufnr)
-        if string.find(filename, "node_modules/") then
-          return nil
-        end
-        if string.find(filename, "dist/") then
-          return nil
-        end
-        return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
-      end,
-      settings = {
-        codeAction = {
-          disableRuleComment = {
-            enable = true,
-            location = "separateLine",
-          },
-          showDocumentation = {
-            enable = true,
-          },
-        },
-        codeActionOnSave = {
-          enable = false,
-          mode = "all",
-        },
-        experimental = {
-          useFlatConfig = false,
-        },
-        format = true,
-        nodePath = "",
-        onIgnoredFiles = "off",
-        packageManager = "npm",
-        problems = {
-          shortenToSingleLine = false,
-        },
-        quiet = false,
-        rulesCustomizations = {},
-        run = "onType",
-        useESLintClass = false,
-        validate = "on",
-        workingDirectory = {
-          mode = "location",
-        },
-      },
-    })
+    -- nvim_lsp.eslint.setup({
+    --   on_attach = function(client, bufnr)
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --       buffer = bufnr,
+    --       command = "EslintFixAll",
+    --     })
+    --   end,
+    --   cmd = { "vscode-eslint-language-server", "--stdio" },
+    --   filetypes = {
+    --     "javascript",
+    --     "javascriptreact",
+    --     "javascript.jsx",
+    --     "typescript",
+    --     "typescriptreact",
+    --     "typescript.tsx",
+    --     "vue",
+    --     "svelte",
+    --     "astro",
+    --   },
+    --   root_dir = function(filename, bufnr)
+    --     if string.find(filename, "node_modules/") then
+    --       return nil
+    --     end
+    --     if string.find(filename, "dist/") then
+    --       return nil
+    --     end
+    --     return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
+    --   end,
+    --   settings = {
+    --     codeAction = {
+    --       disableRuleComment = {
+    --         enable = true,
+    --         location = "separateLine",
+    --       },
+    --       showDocumentation = {
+    --         enable = true,
+    --       },
+    --     },
+    --     codeActionOnSave = {
+    --       enable = false,
+    --       mode = "all",
+    --     },
+    --     experimental = {
+    --       useFlatConfig = false,
+    --     },
+    --     format = true,
+    --     nodePath = "",
+    --     onIgnoredFiles = "off",
+    --     packageManager = "npm",
+    --     problems = {
+    --       shortenToSingleLine = false,
+    --     },
+    --     quiet = false,
+    --     rulesCustomizations = {},
+    --     run = "onType",
+    --     useESLintClass = false,
+    --     validate = "on",
+    --     workingDirectory = {
+    --       mode = "location",
+    --     },
+    --   },
+    -- })
+    --
 --     -- nvim_lsp.r_language_server.setup{
 --     --   cmd = { "R", "--slave", "-e", "languageserver::run()"},
 --     --   filetypes = {"r", "rmd"},
@@ -181,6 +182,12 @@ return {
       setting = {
         { ["rust_analyzer"] = {} },
       },
+    })
+
+    nvim_lsp.graphql.setup({
+      cmd = { "graphql-lsp", "server", "-m", "stream" },
+      filetypes = { "graphql", "typescriptreact", "javascriptreact" },
+      root_dir = nvim_lsp.util.root_pattern('.git', '.graphqlrc*', '.graphql.config.*', 'graphql.config.*')
     })
   end,
 }

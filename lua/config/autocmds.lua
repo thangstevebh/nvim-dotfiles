@@ -16,7 +16,7 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = "fish"
+vim.opt.shell = "zsh"
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
@@ -59,14 +59,14 @@ local autocmd = vim.api.nvim_create_autocmd
 local disable_node_modules_eslint_group = autogroup("DisableNodeModulesEslint", { clear = true })
 local my_config_group = autogroup("MyConfigGroup", { clear = true })
 
--- AUTO-COMMANDS:
-autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "**/node_modules/**", "node_modules", "/node_modules/*", "**/dist/**", "dist", "/dist/*" },
-	callback = function()
-		vim.diagnostic.disable()
-	end,
-	group = disable_node_modules_eslint_group,
-})
+-- -- AUTO-COMMANDS:
+-- autocmd({ "BufNewFile", "BufRead" }, {
+-- 	pattern = { "**/node_modules/**", "node_modules", "/node_modules/*", "**/dist/**", "dist", "/dist/*" },
+-- 	callback = function()
+-- 		vim.diagnostic.disable()
+-- 	end,
+-- 	group = disable_node_modules_eslint_group,
+-- })
 
 -- session
 autocmd({ "User" }, {

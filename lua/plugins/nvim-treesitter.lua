@@ -31,6 +31,9 @@ return {
         "vue",
         "regex",
         "javascript",
+        "markdown",
+        "markdown_inline",
+        "regex"
       },
       autotag = {
         enable = true,

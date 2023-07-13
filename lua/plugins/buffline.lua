@@ -6,14 +6,16 @@ return {
 		require("bufferline").setup({
 			options = {
 				mode = "tabs",
+				themable = false,
 				separator_style = "slant",
 				always_show_bufferline = true,
 				show_buffer_close_icons = false,
+				show_tab_indicators = true,
 				show_close_icon = false,
 				color_icons = true,
 				indicator = {
 					icon = "▌",
-					style = "icon",
+					style = "underline",
 				},
 				offsets = {
 					{
@@ -29,10 +31,14 @@ return {
 						text_align = "center",
 					},
 				},
+				max_name_length = 18,
+				max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+				truncate_names = true, -- whether or not tab names should be truncated
+				tab_size = 18,
 			},
 			highlights = {
 				indicator_selected = {
-					fg = "#61afef",
+					fg = "#b16286",
 				},
 			},
 		})

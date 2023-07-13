@@ -11,17 +11,18 @@ opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 0
 g.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize,terminal"
+
 g.clipboard = {
-  name = "xsel",
-  copy = {
-    ["+"] = "xsel -i -b",
-    ["*"] = "xsel -i -p",
-  },
-  paste = {
-    ["+"] = "xsel -o -b",
-    ["*"] = "xsel -o -p",
-  },
-  cache_enabled = 0,
+	name = "xsel",
+	copy = {
+		["+"] = "xsel -i -b",
+		["*"] = "xsel -i -p",
+	},
+	paste = {
+		["+"] = "xsel -o -b",
+		["*"] = "xsel -o -p",
+	},
+	cache_enable = 0,
 }
 
 vim.cmd([[

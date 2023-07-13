@@ -45,7 +45,7 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Formatter Linter
-keymap.set("n", "<leader>f", ":Prettier<Return>", { noremap = true, silent = true })
+keymap.set("n", "<C-i>", ":Prettier<Return>", { noremap = true, silent = true })
 vim.keymap.set(
 	"n",
 	"<leader>ff",
@@ -55,6 +55,8 @@ vim.keymap.set(
 
 -- Save Document
 keymap.set("n", "<C-s>", ":wa<Return>", { noremap = true, silent = true })
+
+-- Format
 
 --Lazygit
 keymap.set("n", "<Leader>gg", ":LazyGit<Return>", { silent = true })
@@ -69,6 +71,7 @@ keymap.set("v", "<C-X>", '"+x', { silent = true })
 keymap.set("v", "<C-c>", '"+y', { silent = true })
 
 keymap.set("n", "<C-v>", '"+gP', { silent = true })
+keymap.set("i", "<C-v>", '"+pa', { silent = true })
 
 --REDO
 keymap.set("n", "<C-z>", "<C-r>")
@@ -76,3 +79,6 @@ keymap.set("n", "<C-z>", "<C-r>")
 -- aerial
 --
 vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+
+-- Toggle Diagnostic 
+keymap.set("n", "<leader>z", '<cmd>ToggleDiag<CR>')
