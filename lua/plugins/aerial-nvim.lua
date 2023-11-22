@@ -91,7 +91,7 @@ return {
       man = {
         -- How long to wait (in ms) after a buffer change before updating
         update_delay = 300,
-      },
+      }
     })
   end,
 }

@@ -1,13 +1,16 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.1",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	tag = "0.1.4",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-node-modules.nvim",
+	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-		local builtin = require("telescope.builtin")
+		-- local builtin = require("telescope.builtin")
 		local fb_actions = require("telescope").extensions.file_browser.actions
-		require("telescope").load_extension("media_files")
+		local project_actions = require("telescope._extensions.project.actions")
 
 		telescope.setup({
 			defaults = {
@@ -48,6 +51,20 @@ return {
 						},
 					},
 				},
+				project = {
+					base_dirs = {},
+					hidden_files = true, -- default: false
+					theme = "dropdown",
+					order_by = "asc",
+					search_by = "title",
+					sync_with_nvim_tree = true, -- default false
+					-- default for on_project_selected = find project files
+					on_project_selected = function(prompt_bufnr)
+						-- Do anything you want in here. For example:
+						project_actions.change_working_directory(prompt_bufnr, false)
+						-- require("harpoon.ui").nav_file(1)
+					end,
+				},
 			},
 		})
 
@@ -59,6 +76,9 @@ return {
 		telescope.load_extension("file_browser")
 		telescope.load_extension("project")
 		telescope.load_extension("aerial")
+		telescope.load_extension("media_files")
+		telescope.load_extension("node_modules")
+
 		local opts = { noremap = true, silent = true }
 		vim.keymap.set(
 			"n",
@@ -79,15 +99,10 @@ return {
 		)
 		vim.keymap.set(
 			"n",
-			"sm",
+			"mf",
 			'<cmd>lua require("telescope").extensions.media_files.media_files({ path = "%:p:h", cwd = telescope_buffer_dir() })<cr>',
 			opts
 		)
-		vim.keymap.set(
-			"n",
-			";p",
-			'<cmd>lua require("telescope").extensions.project.project{ display_type = "full"}<CR>',
-			opts
-		)
+		vim.keymap.set("n", ";p", '<cmd>lua require("telescope").extensions.project.project{}<CR>', opts)
 	end,
 }

@@ -5,6 +5,7 @@ return {
       enable_on_startup = true,
       win_opts = {
         width = 25,
+        border= "rounded",
       }
     }
 

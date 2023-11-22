@@ -2,7 +2,7 @@ return {
   "onsails/lspkind.nvim",
   config = function()
     require("lspkind").init({
-    mode = 'symbol_text',
+    mode = 'symbol',
     preset = 'codicons',
     symbol_map = {
       Text = "",

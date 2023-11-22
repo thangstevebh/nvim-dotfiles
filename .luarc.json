@@ -16,5 +16,15 @@
         "/usr/share/nvim/runtime",
         "/home/tha/.local/state/nvim/lazy/readme",
         "${3rd}/luassert/library"
+    ],
+    "diagnostics.disable": [
+        "incomplete-signature-doc",
+        "trailing-space",
+        "no-unknown",
+        "missing-global-doc",
+        "redefined-local"
+    ],
+    "diagnostics.globals": [
+        "telescope_buffer_dir"
     ]
 }

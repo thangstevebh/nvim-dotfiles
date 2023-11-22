@@ -25,8 +25,24 @@ return {
 				"SignColumn",
 				"CursorLineNr",
 				"EndOfBuffer",
+				"NormalFloat",
+				"Pmenu",
+				"Float",
 			},
-			extra_groups = {}, -- table: additional groups that should be cleared
+			extra_groups = {
+				"IndentBlanklineChar",
+
+				-- make floating windows transparent
+				"LspFloatWinNormal",
+				"Normal",
+				"NormalFloat",
+				"FloatBorder",
+				"TelescopeNormal",
+				"TelescopeBorder",
+				"TelescopePromptBorder",
+				"SagaBorder",
+				"SagaNormal",
+			}, -- table: additional groups that should be cleared
 			exclude_groups = {}, -- table: groups you don't want to clear
 		})
 	end,

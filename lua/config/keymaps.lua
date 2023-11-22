@@ -45,10 +45,10 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Formatter Linter
-keymap.set("n", "<C-i>", ":Prettier<Return>", { noremap = true, silent = true })
+-- keymap.set("n", "<C-i>", ":Prettier<Return>", { noremap = true, silent = true })
 vim.keymap.set(
 	"n",
-	"<leader>ff",
+	"<C-i>",
 	"<cmd>lua vim.lsp.buf.format({ async = true })<CR>",
 	{ noremap = true, silent = true }
 )
@@ -62,8 +62,14 @@ keymap.set("n", "<C-s>", ":wa<Return>", { noremap = true, silent = true })
 keymap.set("n", "<Leader>gg", ":LazyGit<Return>", { silent = true })
 
 --transparent
-keymap.set("n", "<Leader>tt", ":TransparentToggle<Return>", { silent = true , noremap = true })
+keymap.set("n", "<Leader>tt", ":TransparentToggle<Return>", { silent = true, noremap = true })
 
+-- bind
+local opts = { noremap = true, silent = true }
+keymap.set("n", "<A-j>", "<Cmd>m .+1<cr>==", opts)
+keymap.set("n", "<A-k>", "<Cmd>m .-2<cr>==", opts)
+keymap.set("i", "<A-j> <Esc>", "<Cmd>m .+1<cr>==gi", opts)
+keymap.set("i", "<A-k> <Esc>", "<Cmd>m .-2<cr>==gi", opts)
 --COPY PASTE CUT
 --
 keymap.set("v", "<C-X>", '"+x', { silent = true })
@@ -78,7 +84,12 @@ keymap.set("n", "<C-z>", "<C-r>")
 
 -- aerial
 --
-vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
 
--- Toggle Diagnostic 
-keymap.set("n", "<leader>z", '<cmd>ToggleDiag<CR>')
+-- Toggle Diagnostic
+keymap.set("n", "<leader>z", "<cmd>ToggleDiag<CR>")
+
+-- Rest Api
+keymap.set("n", "<Leader>cc", "<Plug>RestNvim", { silent = true, noremap = true })
+keymap.set("n", "<Leader>cp", "<Plug>RestNvimPreview", { silent = true, noremap = true })
+keymap.set("n", "<Leader>cl", "<Plug>RestNvimLast", { silent = true, noremap = true })
